@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Robux Store</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">🪙 Robux Store</div>
+
+</div>
+
+
+<div id="shop" class="shop"></div>
+
+
+<div id="popup" class="popup">
+
+<div class="popup-card">
+
+<div class="close" onclick="closePopup()">✕</div>
+
+<h2 id="popupTitle"></h2>
+
+
+<div id="step1" class="step">
+
+<input id="email" placeholder="Enter your email">
+
+<button class="main-btn" onclick="nextStep()">Continue</button>
+
+</div>
+
+
+<div id="step2" class="step hidden">
+
+<input id="username" placeholder="Roblox Username">
+
+<select id="payment">
+<option value="">Select payment method</option>
+<option value="gamepass">Gamepass</option>
+<option value="group">Group Transfer</option>
+</select>
+
+<div id="groupInfo" class="hidden group-box">
+
+Join the group before ordering:
+
+<a href="https://www.roblox.com/communities/34674460/Cool-Games-Studio#!/about" target="_blank">
+Cool Games Studio
+</a>
+
+</div>
+
+<button class="main-btn" onclick="finishOrder()">Confirm Order</button>
+
+</div>
+
+
+<div id="success" class="hidden success">
+
+✔ Order Submitted
+
+</div>
+
+<button class="cancel" onclick="closePopup()">Cancel</button>
+
+</div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
