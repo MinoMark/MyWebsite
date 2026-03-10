@@ -4,73 +4,102 @@
 <meta charset="UTF-8">
 <title>Robux Store</title>
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="header">
+<!-- Header -->
+<header class="header">
   <div class="logo">🪙 Robux Store</div>
-</div>
+  <nav>
+    <a href="#shop-section">Shop</a>
+    <a href="#contact-section">Contact</a>
+  </nav>
+</header>
 
-<div id="shop" class="shop"></div>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Get Robux Fast & Safe!</h1>
+    <p>Choose your Robux pack and complete your order in just a few clicks. Secure, reliable, and easy to use.</p>
+    <button class="btn-hero" onclick="scrollToShop()">Shop Now</button>
+  </div>
+</section>
 
-<!-- POPUP -->
+<!-- Shop Section -->
+<section class="shop-container" id="shop-section">
+  <h2>Our Robux Packs</h2>
+  <div id="shop" class="shop-grid"></div>
+</section>
+
+<!-- Popup Modal -->
 <div id="popup" class="popup">
   <div class="popup-card">
+    <div class="popup-header">
+      <h2 id="popupTitle"></h2>
+      <span class="close" onclick="closePopup()">✕</span>
+    </div>
 
-    <div class="close" onclick="closePopup()">✕</div>
-
-    <h2 id="popupTitle"></h2>
-
-    <!-- STEP 1: Roblox Info -->
+    <!-- Step 1: Roblox Info -->
     <div id="step1" class="step">
       <input id="display" placeholder="Roblox Display Name">
       <input id="username" placeholder="Roblox Username">
-      <button class="main-btn" onclick="goEmailStep()">Continue</button>
+      <div class="popup-buttons">
+        <button class="btn-primary" onclick="goEmailStep()">Continue</button>
+        <button class="btn-secondary" onclick="closePopup()">Cancel</button>
+      </div>
     </div>
 
-    <!-- STEP 2: Email -->
+    <!-- Step 2: Email -->
     <div id="step2" class="step hidden">
       <input id="email" type="email" placeholder="Enter your email">
-      <button class="main-btn" onclick="goPaymentStep()">Continue</button>
+      <div class="popup-buttons">
+        <button class="btn-primary" onclick="goPaymentStep()">Continue</button>
+        <button class="btn-back" onclick="backToStep1()">Back</button>
+        <button class="btn-secondary" onclick="closePopup()">Cancel</button>
+      </div>
     </div>
 
-    <!-- STEP 3: Payment -->
+    <!-- Step 3: Payment -->
     <div id="step3" class="step hidden">
       <select id="payment">
         <option value="">Select payment method</option>
         <option value="gamepass">Gamepass</option>
         <option value="group">Group Transfer</option>
       </select>
-
       <div id="groupInfo" class="hidden group-box">
         Join the group before ordering:<br>
         <a href="https://www.roblox.com/communities/34674460/Cool-Games-Studio#!/about" target="_blank">
           Cool Games Studio
         </a>
       </div>
-
-      <button class="main-btn" onclick="finishOrder()">Confirm Order</button>
+      <div class="popup-buttons">
+        <button class="btn-primary" onclick="checkPaymentStep()">Confirm Order</button>
+        <button class="btn-back" onclick="backToStep2()">Back</button>
+        <button class="btn-secondary" onclick="closePopup()">Cancel</button>
+      </div>
     </div>
 
-    <div id="success" class="hidden success">
-      ✔ Order Submitted!
+    <!-- Step 4: Gamepass Info -->
+    <div id="step4" class="step hidden">
+      <input id="gamepassLink" placeholder="Enter Gamepass ID or link">
+      <div class="popup-buttons">
+        <button class="btn-primary" onclick="finishOrder()">Finish Order</button>
+        <button class="btn-back" onclick="backToStep3()">Back</button>
+        <button class="btn-secondary" onclick="closePopup()">Cancel</button>
+      </div>
     </div>
 
-    <button class="cancel" onclick="closePopup()">Cancel</button>
+    <!-- Success -->
+    <div id="success" class="hidden success">✔ Order Submitted!</div>
 
   </div>
 </div>
 
-<!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-(function(){
-  emailjs.init("DKhCKDn04lMzxU-4y"); // <-- Replace with your EmailJS API Key
-})();
+  (function(){ emailjs.init("DKhCKDn04lMzxU-4y"); })();
 </script>
-
-<!-- Your JS -->
 <script src="script.js"></script>
 </body>
 </html>
-
