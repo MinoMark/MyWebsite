@@ -88,7 +88,7 @@ function finishOrder(){
     payment: paymentMethod
   };
 
-  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
+  emailjs.send("service_kcx3gp6", "service_kcx3gp6", templateParams)
   .then(function(response){
     console.log("SUCCESS", response);
     document.getElementById("step3").classList.add("hidden");
@@ -112,3 +112,4 @@ function resetPopup(){
   document.getElementById("email").value = "";
   document.getElementById("payment").value = "";
 }
+
